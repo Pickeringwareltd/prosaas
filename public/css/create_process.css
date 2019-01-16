@@ -1,0 +1,84 @@
+.card {
+  padding: 8% 10% 10% 10%;
+}
+
+.errors li {
+  color: red;
+}
+
+#page_title {
+  font-weight: 800;
+  font-size: 48px;
+  padding-bottom: 2%;
+}
+
+#process_template {
+  height: 100vh;
+}
+
+.locked_icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  font-size: 100px;
+  padding: 20px;
+}
+
+.modal_title {
+  text-align: center;
+  padding: 20px;
+}
+
+.vault_password {
+  padding: 50px;
+  margin: 0 auto;
+}
+
+.submit_vault_password {
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#new_tag_form {
+  margin-left: 15px;
+  background-color: #fff !important;
+  border: 1px solid #209cee !important;
+}
+
+#new_tag_input {
+  color: #209cee;
+  background-color: transparent;
+  border: 0px;
+}
+
+input:focus {
+  outline-width: 0;
+}
+
+::-webkit-input-placeholder {
+  color: #209cee;
+}
+
+::-ms-input-placeholder {
+  color: #209cee;
+}
+
+::placeholder {
+  color: #209cee;
+}
+
+#new_tag_icon {
+  color: #209cee;
+  padding-bottom: 10px;
+}
+

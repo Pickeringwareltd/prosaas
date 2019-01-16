@@ -1,0 +1,29 @@
+.process_title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 35px;
+}
+
+.process {
+  float: left;
+  padding-right: 50px;
+}
+
+.process_img > img {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.process_data > p {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.process_name {
+  font-weight: 900;
+}
+

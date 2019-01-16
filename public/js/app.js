@@ -69409,6 +69409,153 @@ Vue.component('spark-update-team-photo', {
 
 /***/ }),
 
+/***/ "./resources/sass/companies.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/company.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/company_contacts.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/company_locations.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/company_single.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/company_staff.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/create_process.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/custom_main.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/custom_nav.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/dashboard.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/data_store.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/errors.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/files.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/process.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/processes.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/profile.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/profiles.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/sidebar.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/staff.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/style.default.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/task.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./spark/resources/assets/js/auth/register-braintree.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -74858,7 +75005,28 @@ __webpack_require__("./spark/resources/assets/js/forms/bootstrap.js");
 
 __webpack_require__("./resources/js/app.js");
 __webpack_require__("./resources/sass/app.scss");
-module.exports = __webpack_require__("./resources/sass/app-rtl.scss");
+__webpack_require__("./resources/sass/app-rtl.scss");
+__webpack_require__("./resources/sass/task.scss");
+__webpack_require__("./resources/sass/process.scss");
+__webpack_require__("./resources/sass/create_process.scss");
+__webpack_require__("./resources/sass/custom_main.scss");
+__webpack_require__("./resources/sass/staff.scss");
+__webpack_require__("./resources/sass/sidebar.scss");
+__webpack_require__("./resources/sass/style.default.scss");
+__webpack_require__("./resources/sass/dashboard.scss");
+__webpack_require__("./resources/sass/company.scss");
+__webpack_require__("./resources/sass/profile.scss");
+__webpack_require__("./resources/sass/data_store.scss");
+__webpack_require__("./resources/sass/errors.scss");
+__webpack_require__("./resources/sass/custom_nav.scss");
+__webpack_require__("./resources/sass/companies.scss");
+__webpack_require__("./resources/sass/company_single.scss");
+__webpack_require__("./resources/sass/company_locations.scss");
+__webpack_require__("./resources/sass/files.scss");
+__webpack_require__("./resources/sass/company_staff.scss");
+__webpack_require__("./resources/sass/company_contacts.scss");
+__webpack_require__("./resources/sass/processes.scss");
+module.exports = __webpack_require__("./resources/sass/profiles.scss");
 
 
 /***/ })

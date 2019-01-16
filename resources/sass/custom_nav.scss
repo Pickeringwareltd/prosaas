@@ -1,0 +1,102 @@
+.navbar {
+	background: #5d49cb; /* Old browsers */
+	background: -moz-linear-gradient(left, #5d49cb 0%, #207cca 50%, #207cca 50%, #67adff 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, #5d49cb 0%,#207cca 50%,#207cca 50%,#67adff 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, #5d49cb 0%,#207cca 50%,#207cca 50%,#67adff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5d49cb', endColorstr='#67adff',GradientType=1 ); /* IE6-9 */
+	
+	height: 30vh;
+
+	box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75);
+}
+
+.navbar-brand {
+	position: absolute;
+	top: 25px;
+	left: 50px;
+}
+
+.navbar-toggler {
+	position: absolute;
+	top: 40px;
+	left: 25px;
+}
+
+.navbar-toggler-icon {
+	display: none;
+}
+
+.header_titles {
+	position: absolute;
+	top: 40%;
+	left: 5%;	
+	display: inline;
+}
+
+#back_icon {
+	color: #fff;
+	font-size: 40px;
+	display: inline-block;
+	padding-right: 40px;	
+}
+
+.page_title {
+	font-family: 'Montserrat', sans-serif;
+	color: #fff;
+	font-weight: 900 !important;
+	font-size: 60px;
+	display: inline-block;
+	padding-right: 20px;
+}
+
+.page_subtitle {
+	font-family: 'Montserrat', sans-serif;
+	color: #fff;
+	font-weight: 200 !important;
+	font-size: 40px;
+	display: inline-block;
+}
+
+#navbarSupportedContent {
+	display: block;
+	position: absolute;
+	top: 5%;
+	right: 5%;
+}
+
+#brand_title {
+	font-family: 'Montserrat', sans-serif;
+	color: #fff;
+	font-weight: 900 !important;
+	font-size: 30px;
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 992px) {
+	.page_title {
+		font-size: 50px;
+	}
+
+	#navbarSupportedContent {
+		display: none !important;
+	}
+
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 760px) {
+	.page_title {
+		font-size: 40px;
+		text-align: center;
+		left: 0px;
+		width: 100%;
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+
+	#brand_title {
+		font-size: 20px;
+	}
+}

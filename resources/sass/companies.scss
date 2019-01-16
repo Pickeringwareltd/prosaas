@@ -1,0 +1,79 @@
+body {
+	background-color: #fff;
+}
+
+p {
+	font-family: 'Montserrat', sans-serif;
+}
+
+/* -------------------------------------------------- COMPANY TABLE ------------------------------------------------------------- */
+
+@media screen and (max-width: 895px) {
+  .companies_table {
+    justify-content: center;
+  }
+}
+
+/* -------------------------------------------------- COMPANY CARDS------------------------------------------------------------- */
+
+.company_card {
+	border:1px solid #f5f5f5;
+	border-radius: 15px;
+	min-width: 304px;
+	max-width: 400px;
+	height: 507px;
+}
+
+.company_card:hover {
+	-webkit-box-shadow:1px 2px 3px 3px #D8D8D8 ;
+	-moz-box-shadow:1px 2px 3px 3px #D8D8D8 ;
+	box-shadow:1px 2px 3px 3px #D8D8D8 ;
+}
+
+.company_img {
+	position: relative;
+    right: 10%;
+    border-radius: 15px;
+    background-color: #fff;
+    justify-content: center;
+    top: 5%;
+    border:1px solid #f5f5f5;
+}
+
+.company_img > img {
+	max-height: 136px;
+    max-width: 136px;
+}
+
+.company_name {
+	color: #4B4B4B;
+	font-weight: 900 !important;
+	font-size: 25px;
+}
+
+.company_role {
+	color: #4B4B4B;
+	font-weight: 400 !important;
+	font-size: 15px;
+	margin-bottom: 50px;
+}
+
+.staff_picture {
+	float: left;
+	width: 60px;
+	height: 60px;
+}
+
+/* ---------------- WE NEED TO CHANGE THIS TO DROP IN THE BACKGROUND COLOUR DYNAMICALLY -------------------------------*/
+
+#techquity > .company_img {
+	background-color: #000;
+}
+
+#add_company > .company_img {
+	border:1px solid #F7F7F7;
+	background-color: #F7F7F7;
+}
+
+
+

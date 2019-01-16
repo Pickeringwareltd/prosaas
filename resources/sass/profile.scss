@@ -1,0 +1,93 @@
+.contact_list {
+	list-style-type: none;
+}
+
+.contact_item {
+	float: left; 
+	padding: 10px;
+}
+
+.contact_icon {
+	display: block;
+}
+
+.info_table {
+	padding-top: 5%;
+}
+
+.locked_icon {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+	font-size: 100px;
+	padding: 20px;
+}
+
+.modal_title {
+	text-align: center;
+	padding: 20px;
+}
+
+.vault_password {
+	padding: 50px;
+	margin: 0 auto;
+}
+
+.submit_vault_password {
+	margin: 20px;
+  	display: flex;
+  	justify-content: center;
+}
+
+.datepicker {
+	display: block !important;
+}
+
+.copied {
+	font-size: 28px;
+	font-weight: 400;
+	text-align: center;
+}
+
+/* new tag input */
+#modal_new_tag_form {
+    margin-top: 25px;
+    background-color: #fff !important;
+    border: 1px solid #209cee !important;
+    max-width: 80%;
+}
+
+#modal_new_tag_input {
+    padding-left: 15px;
+    color: #209cee;
+    background-color: transparent;
+    border: 0px;
+}
+
+input:focus {
+    outline-width: 0;
+}
+
+::placeholder { 
+    color: #209cee;
+}
+
+#modal_new_tag_icon {
+    color: #209cee;
+    margin-top: 15px;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width : 992px) {
+	#profile_img {
+		margin: 0 auto;
+    	margin-bottom: 10px;
+	}
+
+	.company_name {
+		text-align: center;
+	}
+
+}
+
+

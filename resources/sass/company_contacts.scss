@@ -1,0 +1,35 @@
+.process_title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 35px;
+}
+
+.contact {
+	float: left;
+	padding-right: 50px;
+}
+
+.contact_img > img {
+	border-radius: 50%;
+	height: 100px;
+	width: 100px;
+	display:block;
+    margin:auto;
+    margin-bottom: 10px;
+}
+
+.contact_data > p {
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.contact_name {
+	font-weight: 900;
+}
+
+#search_results > .contact {
+	padding-right: 0px;
+	margin: auto;
+	float: none;
+	padding-bottom: 25px;
+}

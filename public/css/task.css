@@ -1,0 +1,61 @@
+#process_progress_bar {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 30px;
+}
+
+.progress-bar {
+  height: 30px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#close_btn {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+}
+
+#tag_template {
+  height: 100vh;
+}
+
+.carousel-cell {
+  max-width: 90%;
+  width: 90%;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+#process_title {
+  text-align: center;
+  padding-top: 25px;
+  font-weight: 800;
+  font-size: 48px;
+}
+
+.card_title {
+  text-align: center;
+  padding: 25px;
+}
+
+.card_description {
+  text-align: center;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.form_inputs {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.card_logo {
+  max-height: 50px;
+  max-width: 50px;
+  display: block;
+  margin: auto;
+}
+

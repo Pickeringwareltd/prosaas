@@ -1,0 +1,44 @@
+.row a:hover {
+  text-decoration: none;
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+}
+
+#close_btn {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+}
+
+#process_title {
+  padding-top: 25px;
+  font-weight: 800;
+  font-size: 48px;
+}
+
+#process_template {
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.card-content {
+  position: relative;
+}
+
+.community_tag {
+  position: absolute;
+  top: 25px;
+  right: 15px;
+}
+
+.card_col {
+  padding-top: 25px;
+}
+
+.card_title {
+  padding-right: 50px;
+}
+

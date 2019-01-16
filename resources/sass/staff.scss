@@ -1,0 +1,32 @@
+#process_title {
+	padding-top: 25px;
+	font-weight: 800;
+	font-size: 48px;
+}
+
+#staff_template {
+	min-height: 100vh;
+	padding-bottom: 50px;
+}
+
+.card_col {
+	text-align: center;
+	padding-bottom: 50px;
+}
+
+.card_col a:hover {
+    text-decoration: none;
+}
+
+.card_col .image {
+	margin: 0 auto;
+}
+
+.card_col .card_title {
+	padding-top: 10px;
+	margin-bottom: 0px !important;
+}
+
+.card_col .card_role {
+	color: black;
+}

@@ -1,0 +1,26 @@
+.profile_picture {
+	background-color: transparent;
+	border-radius: 23px;
+    -moz-border-radius: 23px;
+    -webkit-border-radius: 23px;
+    padding: 10px;
+    position: relative;
+    bottom: 20%;
+    right: 5%;
+    z-index: 999;
+    width: 80%;
+}
+
+.profile_picture > img {
+	border-radius: 50%;
+	width: 150px !important;
+	height: 150px !important;
+}
+
+.search {
+	bottom: 15%;
+}
+
+.tags {
+	bottom: 10%;
+}

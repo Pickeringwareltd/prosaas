@@ -1,0 +1,30 @@
+.staff_member {
+  float: left;
+  padding-right: 50px;
+}
+
+.staff_img > img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.staff_data > p {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.staff_name {
+  font-weight: 900;
+}
+
+#search_results > .staff_member {
+  padding-right: 0px;
+  margin: auto;
+  float: none;
+  padding-bottom: 25px;
+}
+
