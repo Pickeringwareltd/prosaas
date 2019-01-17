@@ -122,17 +122,9 @@ class StaffResourceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $our_tags = [];
-
-        $tags = $request->tags;
-
-        for($i = 0; $i < count($tags) ; $i++){
-            $our_tags[$i] = \Spatie\Tags\Tag::findOrCreate(['name' => $tags[$i]]);
-        }
-
         $staff = Staff::find($id);
 
-        $staff->tags = $our_tags;
+        $staff->attachTag('Factory');
 
         $staff->save();
 

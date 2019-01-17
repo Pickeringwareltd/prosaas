@@ -2,7 +2,6 @@
 
 @section('scripts')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" rel="stylesheet">
-    <link href="/css/bulma-calendar.min.css" rel="stylesheet">
     <link href="/css/company_single.css" rel="stylesheet">
     <link href="/css/company_locations.css" rel="stylesheet">
 
@@ -206,7 +205,6 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClkmbrF12saBbvlL8-ly-nv24wI7SzmsU&callback=initMap">
     </script>
-    <script src="/js/bulma-calendar.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 
     <script src="/js/google_maps.js"></script>

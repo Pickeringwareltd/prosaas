@@ -104,6 +104,7 @@ body {
 
 .sidebar {
   min-height: 100vh;
+  margin-top: -200px;
 }
 
 .company_logo {
@@ -111,9 +112,8 @@ body {
   -moz-border-radius: 23px;
   -webkit-border-radius: 23px;
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 50px;
   position: relative;
-  bottom: 20%;
   right: 5%;
   z-index: 999;
   width: 80%;
@@ -130,7 +130,7 @@ body {
 .company_people {
   margin-left: 15px;
   position: relative;
-  bottom: 15%;
+  margin-bottom: 50px;
 }
 
 .staff_picture {
@@ -147,7 +147,7 @@ body {
 
 .search {
   position: relative;
-  bottom: 10%;
+  margin-bottom: 50px;
 }
 
 .search > input {
@@ -164,7 +164,7 @@ body {
 .tags {
   font-family: 'Montserrat', sans-serif;
   position: relative;
-  bottom: 5%;
+  margin-bottom: 50px !important;
 }
 
 .tag > p {

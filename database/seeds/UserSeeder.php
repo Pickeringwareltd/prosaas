@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class DatabaseSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -12,9 +12,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-	    $this->call([
-	        UserSeeder::class,
-	        StaffSeeder::class,
-	    ]);
+       factory(App\User::class, 50)->create();
     }
 }

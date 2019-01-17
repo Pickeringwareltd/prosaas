@@ -2,7 +2,6 @@
 
 @section('scripts')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" rel="stylesheet">
-    <link href="/css/bulma-calendar.min.css" rel="stylesheet">
     <link href="/css/company_single.css" rel="stylesheet">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -209,7 +208,6 @@
 @endsection
 
 @section('javascripts')
-    <script src="/js/bulma-calendar.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
     <script src="/js/inner_navbar.js"></script>
 @endsection

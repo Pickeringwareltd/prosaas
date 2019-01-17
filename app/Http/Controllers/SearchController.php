@@ -175,7 +175,7 @@ class SearchController extends Controller
 					if(strpos($name_lower, $search_lower) !== false || $search_lower == ''){
 						$output.= '<div class="staff_member" data-id="'. $member->id .'">
 		                              <div class="staff_img">
-		                                <img class="is-rounded" src="/storage/'. $member->profile_picture . '">
+		                                <img class="is-rounded" src="/storage/images/'. $member->profile_picture . '">
 		                              </div>
 		                              <div class="staff_data">
 		                                <p class="staff_name">'. $member->fullname .'</p>

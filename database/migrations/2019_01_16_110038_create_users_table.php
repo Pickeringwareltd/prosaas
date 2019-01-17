@@ -42,6 +42,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('trial_ends_at')->nullable();
             $table->timestamp('last_read_announcements_at')->nullable();
             $table->timestamps();
+            $table->string('picture')->nullable();
         });
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\CompanyInfoItem;
+use App\Staff;
 
 class CompanyController extends Controller
 {
@@ -56,7 +57,8 @@ class CompanyController extends Controller
      */
     public function staff()
     {
-        return view('company_staff');
+        $staff = Staff::orderBy('fullname')->paginate(12);
+        return view('company_staff')->with('staff', $staff);
     }
     
     /**

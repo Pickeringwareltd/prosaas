@@ -2,7 +2,6 @@
 
 @section('scripts')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" rel="stylesheet">
-    <link href="/css/bulma-calendar.min.css" rel="stylesheet">
     <link href="/css/company_single.css" rel="stylesheet">
     <link href="/css/company_staff.css" rel="stylesheet">
     <link href="/css/processes.css" rel="stylesheet">
@@ -32,7 +31,7 @@
                 <div class="row pl-5">
                   <div class="col-9 p-5">
 
-                      <span class="tag is-medium is-info is-rounded add_information shadow" style="background-color: #3F50B1;">
+                      <span class="tag is-medium is-info is-rounded add_information shadow add_staff" style="background-color: #3F50B1;">
                         <p class="pl-3 pr-3">Add staff</p>
                         <i class="fas fa-plus"></i>
                       </span>
@@ -78,30 +77,29 @@
                               <img src="/images/s_blue_square.png">
                             </div>
                             
-                            <div class="copy_edit_btns position-absolute">
+                            <div class="copy_edit_btns position-absolute add_staff">
                                 <i class="fas fa-plus shadow copy_info" style="background-color: #3F50B1;"></i>
                             </div>
                         </div>
                         
                         <div class="row pl-5">
-                            <div class="staff_member" data-id="1">
-                              <div class="staff_img">
-                                <img class="is-rounded" src="/storage/storage/uploads/5LI9T6pfpqAJleWeUZgXpTwUUFWCzApp6jrlVF8o.jpeg">
-                              </div>
-                              <div class="staff_data">
-                                <p class="staff_name">Jack Pickering</p>
-                                <p class="staff_role">Developer</p>
-                              </div>
-                            </div> 
-                            <div class="staff_member" data-id="2">
-                              <div class="staff_img">
-                                <img class="is-rounded" src="/storage/storage/uploads/qf96SQdhxRm4EidBCnW1DUmVb99mvWiAFbobBMvG.jpeg">
-                              </div>
-                              <div class="staff_data">
-                                <p class="staff_name">Susan Boyle</p>
-                                <p class="staff_role">CEO</p>
-                              </div>
-                            </div>
+
+                            @foreach ($staff as $member)
+                                <div class="col-3 staff_member" data-id="{{ $member->id }}">
+                                  <div class="staff_img">
+                                    <img class="is-rounded" src="/storage/images/{{ $member->profile_picture }}">
+                                  </div>
+                                  <div class="staff_data">
+                                    <p class="staff_name">{{ $member->fullname }}</p>
+                                    <p class="staff_role">{{ $member->role }}</p>
+                                  </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+
+                        <div class="row pt-5 justify-content-center">
+                          {{ $staff->links() }}
                         </div>
 
                       </div>
@@ -156,7 +154,6 @@
 @endsection
 
 @section('javascripts')
-    <script src="/js/bulma-calendar.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
     <script src="/js/inner_navbar.js"></script>
     <script src="/js/staff_links.js"></script>
