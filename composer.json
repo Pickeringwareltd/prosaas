@@ -14,7 +14,8 @@
         "laravel/framework": "5.7.*",
         "laravel/spark-aurelius": "*@dev",
         "laravel/tinker": "^1.0",
-        "spatie/laravel-tags": "^2.2"
+        "spatie/laravel-tags": "^2.2",
+        "fzaninotto/company-name-generator": "dev-master"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

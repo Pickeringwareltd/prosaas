@@ -4,12 +4,82 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\CompanyInfoItem;
+
 use App\Staff;
-use App\Client;
+use App\Contact;
+use App\File;
+use App\Location;
+use App\Information;
+use App\InformationGroup;
 
 class SearchController extends Controller
 {
+	public function information(Request $request){
+
+ 		if($request->ajax()){
+ 
+			$output="";
+			$tags = $request->tags;
+			$search_field = $request->search_field;
+
+			// If both are null, return nothing
+			if($tags == null && $search_field == null){
+				return Response('');
+			}
+
+			// If tags have been selected, filter contact out that dont match those tags
+			if($tags != ''){
+				$info = Information::withAllTags($tags)->where('get_information_type', 'App\InformationGroup')->get();
+			} else {
+				$info = Information::where('get_information_type', 'App\InformationGroup')->get();
+			}
+
+ 			// If there are some staff to show, filter by search field
+			if($info){
+
+				foreach ($info as $member) {
+    
+					$name_lower = strtolower($member->title);
+					$search_lower = $search_field;
+
+					// Must compare the lowercase version of the name and the search terms
+					if($search_field != ''){
+						$search_lower = strtolower($search_lower);
+					}
+
+					// If there is a match on the tags and the search criteria, return that contact member
+					if(strpos($name_lower, $search_lower) !== false || $search_lower == ''){
+						$groupID = $member->get_information_id;
+
+						$group = InformationGroup::find($groupID);
+						$group_colour = $group->color;
+
+						$output.= '<div class="info_item pb-4">
+	                                  <div class="info_title_box">
+	                                    <i class="'. $member->icon .' info_icon" style="display: inline-block; color: '. $group_colour .';"></i>
+	                                    <p class="info_title"><b>'. $member->title .'</b></p>
+	                                  </div>
+	                                  <div class="info_data_box">';
+
+	                                  if($member->encrypted){
+	                                  	$output.='<p class="in_vault">VAULT</p>';
+	                                  } else {
+	                                  	$output.= $member->data;
+	                                  }
+	                                    
+							$output.='</div>
+	                                </div>';
+					}
+				}
+ 
+ 				return Response($output);
+			} else {
+				return Response('');
+			}
+		}
+
+	}
+
 	public function processes(Request $request){
  
  		if($request->ajax()){
@@ -83,7 +153,7 @@ class SearchController extends Controller
 
 	}
 
-	public function clients(Request $request){
+	public function contacts(Request $request){
 
  		if($request->ajax()){
  
@@ -98,9 +168,9 @@ class SearchController extends Controller
 
 			// If tags have been selected, filter contact out that dont match those tags
 			if($tags != ''){
-				$contacts = Client::withAllTags($tags)->get();
+				$contacts = Contact::withAllTags($tags)->get();
 			} else {
-				$contacts = Client::all();
+				$contacts = Contact::all();
 			}
  
  			// If there are some staff to show, filter by search field
@@ -120,13 +190,111 @@ class SearchController extends Controller
 					if(strpos($name_lower, $search_lower) !== false || $search_lower == ''){
 						$output.= '<div class="contact" data-id="'. $member->id .'">
 		                               <div class="contact_img">
-		                                 <img class="is-rounded" src="/storage/'. $member->company_logo .'">
+		                                 <img class="is-rounded" src="/storage/images/'. $member->company_logo .'">
 		                               </div>
 		                               <div class="contact_data">
 		                                 <p class="contact_name">' . $member->name . '</p>
-		                                 <p class="contact_role">' . $member->type . '</p>
+		                                 <p class="contact_role">' . $member->sector . '</p>
 		                               </div>
 		                             </div>';
+					}
+				}
+ 
+ 				return Response($output);
+			} else {
+				return Response('');
+			}
+		}
+
+	}
+
+	public function locations(Request $request){
+
+ 		if($request->ajax()){
+ 
+			$output="";
+			$tags = $request->tags;
+			$search_field = $request->search_field;
+
+			// If both are null, return nothing
+			if($tags == null && $search_field == null){
+				return Response('');
+			}
+
+			// If tags have been selected, filter contact out that dont match those tags
+			if($tags != ''){
+				$locations = Location::withAllTags($tags)->get();
+			} else {
+				$locations = Location::all();
+			}
+ 
+ 			// If there are some staff to show, filter by search field
+			if($locations){
+
+				foreach ($locations as $location) {
+    
+					$name_lower = strtolower($location->name);
+					$search_lower = $search_field;
+
+					// Must compare the lowercase version of the name and the search terms
+					if($search_field != ''){
+						$search_lower = strtolower($search_lower);
+					}
+
+					// If there is a match on the tags and the search criteria, return that contact member
+					if(strpos($name_lower, $search_lower) !== false || $search_lower == ''){
+						$output.= '<div class="row info_box position-relative">
+				                        <div class="copy_edit_btns position-absolute">
+				                            <i class="fas fa-copy shadow copy_info" style="background-color:'. $location->color .';"></i>
+				                        </div>
+				                        <div class="col-4">
+				                          <div class="map_img new_map" id="map_'. $location->id .'" data-name="map_'. $location->id .'" data-long="'. $location->long .'" data-lat="'. $location->lat .'">
+				                          </div> 
+				                        </div>
+				                        <div class="col-8">
+				                          <div class="row">
+				                            <div class="col">
+				                              <p class="box_title">'. $location->name .'</p>
+				                            </div>
+				                          </div>
+				                          <div class="row pt-5">';
+
+				                          	foreach ($location->get_info as $info) {
+				                                $output.='<div class="col-6">
+								                              <div class="info_item pb-4">
+								                                  <div class="info_title_box">
+								                                    <i class="'. $info->icon .' info_icon" style="display: inline-block; color: '. $location->color .';"></i>
+								                                    <p class="info_title"><b>'. $info->title .'</b></p>
+								                                  </div>
+								                                  <div class="info_data_box">';
+
+								                                  if($info->encrypted){
+								                                  	$output.='<p class="in_vault">VAULT</p>';
+								                                  } else {
+								                                  	$output.= $info->data;
+								                                  } 	
+								                              
+								                                 $output.='</div>
+								                                </div>
+								                            </div>';
+				                           	};
+				                            
+
+				                $output.= 	'</div>
+				                          <div class="row pt-3">
+				                            <div class="col">';
+
+				                      		foreach ($location->tags as $tag) {
+				                                $output.='<span class="tag search-tag is-medium is-info is-rounded" data-name="'. $tag->name .'" style="background-color: '. $location->color .';">
+				                                    <p class="pl-3 pr-3">'. ucfirst($tag->name) .'</p>
+				                                  <button class="delete is-small" style="display:none;"></button>
+				                                </span>';
+				                            };
+
+				                            $output.='</div>
+				                          </div>
+				                        </div>
+				                      </div>';
 					}
 				}
  
@@ -192,100 +360,113 @@ class SearchController extends Controller
 		}
 	}
 
-	public function companyItems(Request $request){
- 
+	public function files(Request $request){
+
  		if($request->ajax()){
  
 			$output="";
-			$sent = $request->search;
+			$tags = $request->tags;
 			$search_field = $request->search_field;
-			$selected_tags = $request->selected_tags;
 
-			if($sent != ''){
-				$items = CompanyInfoItem::withAllTags($sent)->get();
+			// If both are null, return nothing
+			if($tags == null && $search_field == null){
+				return Response('');
+			}
+
+			// If tags have been selected, filter staff out that dont match those tags
+			if($tags != ''){
+				$files = File::withAllTags($tags)->get();
 			} else {
-				$items = CompanyInfoItem::all();
+				$files = File::all();
 			}
  
-			if($items){
+ 			// If there are some staff to show, filter by search field
+			if($files){
 
-				foreach ($items as $item) {
-
-					$name_lower = strtolower($item->name);
+				foreach ($files as $file) {
+    
+					$name_lower = strtolower($file->name);
 					$search_lower = $search_field;
 
+					// Must compare the lowercase version of the name and the search terms
 					if($search_field != ''){
 						$search_lower = strtolower($search_lower);
 					}
 
-					if($selected_tags != null){
-
-						foreach($selected_tags as $tag) {
-							
-							$tag_data = explode(":", $tag);
-							$name = $tag_data[0];
-
-							if($name_lower == strtolower($name)){
-								$selected = true;
-							} else {
-								$selected = false;
-							}
-
-						}
-
-					}
-
-					$select_box = '<input id="{{ $item->id }}" name="'. $item->id .'" type="checkbox" data-name="'. $item->name .'" data-value="'. $item->text_value .'" class="select_box checkbox__input d-none"/>
-                                        <label class="select_box d-none" for="'. $item->id .'"></label>';
-
-
-					$selected_box = '<input id="{{ $item->id }}" name="'. $item->id .'" type="checkbox" data-name="'. $item->name .'" data-value="'. $item->text_value .'" class="select_box checkbox__input d-none"/>
-						<label class="select_box d-none" for="'. $item->id .'"></label>';
-
-					// Must also meet the search field criteria
+					// If there is a match on the tags and the search criteria, return that staff member
 					if(strpos($name_lower, $search_lower) !== false || $search_lower == ''){
-
-						if($item->encrypted ===  1){
-							$output.='<div class="notification data-item is-warning vault_item grid-item grid-item--height3" data-value="'. $item->text_value .'" data-id="'. $item->id . '">
-                                      <div class="content">
-                                        <p class="title">'. $item->name .'</p>
-                                        <input id="{{ $item->id }}" name="'. $item->id .'" type="checkbox" data-name="'. $item->name .'" data-value="'. $item->text_value .'" class="select_box checkbox__input d-none"/>
-                                        <label class="select_box d-none" for="'. $item->id .'"></label>
-                                        <div class="content">
-                                            <p class="locked_icon"><i class="fas fa-lock"></i></p>
-                                        </div>
-                                      </div>
-                                    </div>';
-						} else {
-							if($item->type == 'Text'){
-								$output.='<div class="notification data-item is-info copy_btn grid-item grid-item--height2">
-		                                        <p class="title item-title">'. $item->name .'</p>
-		                                        <p class="subtitle item-text">'. $item->text_value .'</p>
-		                                        <input id="'. $item->id .'" name="'. $item->id .'" type="checkbox" data-name="'. $item->name .'" data-value="'. $item->text_value.'" class="select_box checkbox__input d-none"/>
-                                        		<label class="select_box d-none" for="'. $item->id .'"></label>
-		                                        
-		                                      </div>';
-							} else if ($item->type == 'Image'){
-								$output.='<div class="notification data-item is-info grid-item">
-		                                        <p class="title item-title">'. $item->name . '</p>
-		                                        <img class="" src="/storage/'. $item->image_path .'" style="max-width: 50%;"></img>
-		                                        
-		                                      </div>';
-							} else if ($item->type == 'File'){
-								$output.='<div class="notification data-item is-info grid-item grid-item--height3">
-		                                        <p class="title item-title">'.$item->name .'</p>
-		                                        <p class="locked_icon"><i class="fas fa-file-alt"></i></p>
-		                                        
-		                                      </div>';
-							}
-						}
+				                          
+				        if($file->type == 'doc'){
+				        	$output.= ' <div class="file linked_file position-relative" data-link="'. $file->url .'">
+				                        	<div class="file_img position-absolute">
+				                        		<img src="/images/doc_grey_square.png">
+				                        	</div>
+				                    		<div class="file_data position-absolute">
+				                        		<p class="file_title">'. $file->name .'</p>
+				                        		<p class="file_creator">Jack Pickering</p>
+				                    		</div> 
+				                  		</div>';
+				        } else if($file->type == 'pdf') {
+				        	$output.= ' <div class="file linked_file position-relative" data-link="'. $file->url .'">
+				                        	<div class="file_img position-absolute">
+				                        		<img src="/images/pdf_red_square.png">
+				                        	</div>
+				                    		<div class="file_data position-absolute">
+				                        		<p class="file_title">'. $file->name .'</p>
+				                        		<p class="file_creator">Jack Pickering</p>
+				                    		</div> 
+				                  		</div>';
+				        } else if($file->type == 'exe') {
+				        	$output.= ' <div class="file linked_file position-relative" data-link="'. $file->url .'">
+				                        	<div class="file_img position-absolute">
+				                        		<img src="/images/exe_blue_square.png">
+				                        	</div>
+				                    		<div class="file_data position-absolute">
+				                        		<p class="file_title">'. $file->name .'</p>
+				                        		<p class="file_creator">Jack Pickering</p>
+				                    		</div> 
+				                  		</div>';
+				        } else if($file->type == 'img') {
+				         	$output.= ' <div class="file linked_file position-relative" data-link="'. $file->url .'">
+				                        	<div class="file_img position-absolute">
+				                        		<img src="/images/img_green_square.png">
+				                        	</div>
+				                    		<div class="file_data position-absolute">
+				                        		<p class="file_title">'. $file->name .'</p>
+				                        		<p class="file_creator">Jack Pickering</p>
+				                    		</div> 
+				                  		</div>';
+				        } else if($file->type == 'ppt') {
+				         	$output.= ' <div class="file linked_file position-relative" data-link="'. $file->url .'">
+				                        	<div class="file_img position-absolute">
+				                        		<img src="/images/ppt_purple_square.png">
+				                        	</div>
+				                    		<div class="file_data position-absolute">
+				                        		<p class="file_title">'. $file->name .'</p>
+				                        		<p class="file_creator">Jack Pickering</p>
+				                    		</div> 
+				                  		</div>';
+				        	
+				        } else {
+				        	$output.= ' <div class="file linked_file position-relative" data-link="'. $file->url .'">
+				                        	<div class="file_img position-absolute">
+				                        		<img src="/images/unknown_orange_square.png">
+				                        	</div>
+				                    		<div class="file_data position-absolute">
+				                        		<p class="file_title">'. $file->name .'</p>
+				                        		<p class="file_creator">Jack Pickering</p>
+				                    		</div> 
+				                  		</div>';
+				        }
+				                           
 					}
 				};
  
  				return Response($output);
+			} else {
+				return Response('');
 			}
- 
- 		}
-
+		}
 	}
+
 }

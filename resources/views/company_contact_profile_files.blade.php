@@ -10,7 +10,7 @@
 @endsection
 
 @section('pageTitle', 'Techquity')
-@section('pageSubTitle', '| Western Union')
+@section('pageSubTitle', '| '.$contact->name)
 
 @section('content')
 <div class="wrapper">
@@ -22,8 +22,8 @@
             <div class="container-fluid">
                 <div class="row pl-3">
                   <ul id="nav_list">
-                    <li class="nav_item" data-link="">Information</li>
-                    <li class="nav_item active" data-link="files">Files</li>
+                    <li class="nav_item" data-link="/company/contact/{{ $contact->id }}">Information</li>
+                    <li class="nav_item active" data-link="/company/contact/{{ $contact->id }}/files">Files</li>
                   </ul>
                 </div>
                 <div class="row pl-3">
@@ -39,37 +39,41 @@
                   <div class="col-9 p-3 pt-0">
                       <div class="row">
                         <div class="col-9 pb-3 file_table">
-                          <div class="file position-relative">
-                            <div class="file_img position-absolute">
-                                <img src="/images/folder_yellow_square.png">
-                            </div>
-                            <div class="file_data position-absolute">
-                                <p class="file_title">Analytics</p>
-                                <p class="file_creator">Jack Pickering</p>
-                            </div> 
-                          </div>
-                          <div class="file position-relative">
-                            <div class="file_img position-absolute">
-                                <img src="/images/folder_yellow_square.png">
-                            </div>
-                            <div class="file_data position-absolute">
-                                <p class="file_title">Documents</p>
-                                <p class="file_creator">Jack Pickering</p>
-                            </div> 
-                          </div>
-                          <div class="file position-relative">
-                            <div class="file_img position-absolute">
-                                <img src="/images/folder_yellow_square.png">
-                            </div>
-                            <div class="file_data position-absolute">
-                                <p class="file_title">Reports</p>
-                                <p class="file_creator">Jack Pickering</p>
-                            </div> 
+                          <div class="row">
+                              <div class="col-3 file position-relative">
+                                <div class="file_img position-absolute">
+                                    <img src="/images/folder_yellow_square.png">
+                                </div>
+                                <div class="file_data position-absolute">
+                                    <p class="file_title">Analytics</p>
+                                    <p class="file_creator">Jack Pickering</p>
+                                </div> 
+                              </div>
+                              <div class="col-3 file position-relative">
+                                <div class="file_img position-absolute">
+                                    <img src="/images/folder_yellow_square.png">
+                                </div>
+                                <div class="file_data position-absolute">
+                                    <p class="file_title">Documents</p>
+                                    <p class="file_creator">Jack Pickering</p>
+                                </div> 
+                              </div>
+                              <div class="col-3 file position-relative">
+                                <div class="file_img position-absolute">
+                                    <img src="/images/folder_yellow_square.png">
+                                </div>
+                                <div class="file_data position-absolute">
+                                    <p class="file_title">Reports</p>
+                                    <p class="file_creator">Jack Pickering</p>
+                                </div> 
+                              </div>
                           </div>
                         </div>
                       </div>
-                      
-                        <div class="file position-relative">
+
+                      <div class="row">
+
+                        <div class="col-3 file position-relative">
                           <div class="file_img position-absolute">
                               <img src="/images/doc_grey_square.png">
                           </div>
@@ -78,7 +82,7 @@
                               <p class="file_creator">Jack Pickering</p>
                           </div> 
                         </div>
-                        <div class="file position-relative">
+                        <div class="col-3 file position-relative">
                           <div class="file_img position-absolute">
                               <img src="/images/pdf_red_square.png">
                           </div>
@@ -87,7 +91,7 @@
                               <p class="file_creator">John Smith</p>
                           </div> 
                         </div>
-                        <div class="file position-relative">
+                        <div class="col-3 file position-relative">
                           <div class="file_img position-absolute">
                               <img src="/images/exe_blue_square.png">
                           </div>
@@ -96,7 +100,7 @@
                               <p class="file_creator">Jack Pickering</p>
                           </div> 
                         </div>
-                        <div class="file position-relative">
+                        <div class="col-3 file position-relative">
                           <div class="file_img position-absolute">
                               <img src="/images/pdf_red_square.png">
                           </div>
@@ -106,7 +110,7 @@
                           </div> 
                         </div>
 
-                        <div class="file position-relative">
+                        <div class="col-3 file position-relative">
                           <div class="file_img position-absolute">
                               <img src="/images/exe_blue_square.png">
                           </div>
@@ -115,7 +119,7 @@
                               <p class="file_creator">Jack Pickering</p>
                           </div> 
                         </div>
-                        <div class="file position-relative">
+                        <div class="col-3 file position-relative">
                           <div class="file_img position-absolute">
                               <img src="/images/exe_blue_square.png">
                           </div>
@@ -124,38 +128,13 @@
                               <p class="file_creator">Jack Pickering</p>
                           </div> 
                         </div>
-                        <div class="file position-relative">
-                          <div class="file_img position-absolute">
-                              <img src="/images/doc_grey_square.png">
-                          </div>
-                          <div class="file_data position-absolute">
-                              <p class="file_title">sales_report.doc</p>
-                              <p class="file_creator">Jack Pickering</p>
-                          </div> 
-                        </div>
-                        <div class="file position-relative">
-                          <div class="file_img position-absolute">
-                              <img src="/images/pdf_red_square.png">
-                          </div>
-                          <div class="file_data position-absolute">
-                              <p class="file_title">pitch_deck.pdf</p>
-                              <p class="file_creator">John Smith</p>
-                          </div> 
-                        </div>
-                        <div class="file position-relative">
-                          <div class="file_img position-absolute">
-                              <img src="/images/doc_grey_square.png">
-                          </div>
-                          <div class="file_data position-absolute">
-                              <p class="file_title">sales_report.doc</p>
-                              <p class="file_creator">Jack Pickering</p>
-                          </div> 
-                        </div>
+
+                      </div>
                       
                   </div>
                   <div class="col-3 p-5 sidebar">
                       <div class="profile_picture">
-                          <img class="is-rounded" src="/storage/storage/uploads/EE1dpIJgpqac8HWXvZ2pFXn5b8UuF9cz5pVzOB1J.png">
+                          <img class="is-rounded" src="/storage/images/{{ $contact->company_logo }}">
                       </div>
                       <div class="search">
                           <input type="text" placeholder="Search information"> 

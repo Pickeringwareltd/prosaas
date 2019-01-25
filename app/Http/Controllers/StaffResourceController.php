@@ -73,21 +73,10 @@ class StaffResourceController extends Controller
      */
     public function show($id)
     {
-        $items = CompanyInfoItem::all();
-        $returned_tags = DB::table('tags')->get();
+        $staff = Staff::find($id);
+        $staff->info = $staff->get_info;
 
-        $tags = [];
-
-        for($i = 0; $i < $returned_tags->count() ; $i++){
-            $tags[$i] = $returned_tags[$i]->name;
-        }
-
-        $data = [
-            'items'  => $items,
-            'tags'   => $tags
-        ];
-
-        return view('company_staff_profile')->with('data', $data);
+        return view('company_staff_profile')->with('profile', $staff);
     }
 
     /**
@@ -98,7 +87,8 @@ class StaffResourceController extends Controller
      */
     public function files($id)
     {
-        return view('company_staff_profile_files');
+        $staff = Staff::find($id);
+        return view('company_staff_profile_files')->with('profile', $staff);
     }
 
 
@@ -124,7 +114,7 @@ class StaffResourceController extends Controller
     {
         $staff = Staff::find($id);
 
-        $staff->attachTag('Factory');
+        $staff->attachTag('PR');
 
         $staff->save();
 

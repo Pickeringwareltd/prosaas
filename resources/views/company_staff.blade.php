@@ -20,13 +20,16 @@
           <div class="single_element">
             <div class="container-fluid">
                 <div class="row pl-3">
-                  <ul id="nav_list">
-                    <li class="nav_item" data-link="">Information</li>
-                    <li class="nav_item" data-link="/locations">Locations</li>
-                    <li class="nav_item" data-link="/files">Files</li>
-                    <li class="nav_item active" data-link="/staff">Staff</li>
-                    <li class="nav_item" data-link="/contacts">Contacts</li>
-                  </ul>
+                  <div class="col-9">
+                    <ul id="nav_list" class="pb-3">
+                      <li class="nav_item" data-link="">Information</li>
+                      <li class="nav_item" data-link="/locations">Locations</li>
+                      <li class="nav_item" data-link="/files">Files</li>
+                      <li class="nav_item active" data-link="/staff">Staff</li>
+                      <li class="nav_item" data-link="/contacts">Contacts</li>
+                    </ul>
+                    <hr />
+                  </div>
                 </div>
                 <div class="row pl-5">
                   <div class="col-9 p-5">
@@ -111,15 +114,14 @@
                       <div class="company_people">
                         <div class="staff_pictures">
                           <div class="row">
-                            <figure class="image card-image staff_picture first_picture" style="z-index: 3; position: relative; right: 0px;">
-                                <img class="is-rounded" src="/storage/storage/uploads/5LI9T6pfpqAJleWeUZgXpTwUUFWCzApp6jrlVF8o.jpeg">
-                            </figure>
-                            <figure class="image card-image staff_picture" style="z-index: 2; position: relative; right: 25px;">
-                                <img class="is-rounded" src="/storage/storage/uploads/qf96SQdhxRm4EidBCnW1DUmVb99mvWiAFbobBMvG.jpeg">
-                            </figure>
+                            @for ($i = 0; $i < 4; $i++)
+                                <figure class="image card-image staff_picture" style="z-index: {{ 5 - $i }}; position: relative; right: {{ $i * 25 }}px;">
+                                    <img class="image is-rounded" src="/storage/images/{{ $first_four_staff[$i]->profile_picture }}">
+                                </figure>
+                            @endfor
                           </div>
                           <div class="row">
-                            <p class="people_work_here"><b class="no_of_staff">TWO</b> people work here</p>
+                            <p class="people_work_here"><b id="no_of_staff" data-num="{{ $number_of_staff }}">-</b> people work here</p>
                           </div>
                         </div>
                       </div>
@@ -127,18 +129,19 @@
                           <input type="text" placeholder="Search staff" id="search"> 
                       </div>
                       <div class="tags">
-                        <span class="tag search-tag is-medium is-info is-rounded" data-name="Office" style="background-color: #3F50B1;">
-                            <p class="pl-3 pr-3">Office</p>
-                          <button class="delete is-small" style="display:none;"></button>
-                        </span>
-                        <span class="tag search-tag is-medium is-info is-rounded" data-name="Store" style="background-color: #D93563">
-                            <p class="pl-3 pr-3">Store</p>
-                          <button class="delete is-small" style="display:none;"></button>
-                        </span>
-                        <span class="tag search-tag is-medium is-info is-rounded" data-name="Factory" style="background-color: #6A6A6A">
-                            <p class="pl-3 pr-3">Factory</p>
-                          <button class="delete is-small" style="display:none;"></button>
-                        </span>
+                        @foreach ($tags as $tag)
+                          @php
+                              // colours for tags
+                              $colours = array("#3F50B1", "#35D9CC","#D93563");
+                               
+                              // get random index from array $arrX
+                              $randIndex = array_rand($colours);
+                          @endphp
+                            <span class="tag search-tag is-medium is-info is-rounded" data-name="{{ $tag }}" style="background-color: {{ $colours[$randIndex] }}">
+                                <p class="pl-3 pr-3">{{ $tag }}</p>
+                              <button class="delete is-small" style="display:none;"></button>
+                            </span>
+                        @endforeach
                       </div>
                       <div id="search_results"> 
                       </div>
@@ -158,4 +161,5 @@
     <script src="/js/inner_navbar.js"></script>
     <script src="/js/staff_links.js"></script>
     <script src="/js/search_staff.js"></script>
+    <script src="/js/sidebar_staff.js"></script>
 @endsection

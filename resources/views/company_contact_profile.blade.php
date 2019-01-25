@@ -10,7 +10,7 @@
 @endsection
 
 @section('pageTitle', 'Techquity')
-@section('pageSubTitle', '| Western Union')
+@section('pageSubTitle', '| '.$contact->name)
 
 @section('content')
 <div class="wrapper">
@@ -22,8 +22,8 @@
             <div class="container-fluid">
                 <div class="row pl-3">
                   <ul id="nav_list">
-                    <li class="nav_item active" data-link="">Information</li>
-                    <li class="nav_item" data-link="files">Files</li>
+                    <li class="nav_item active" data-link="/company/contact/{{ $contact->id }}">Information</li>
+                    <li class="nav_item" data-link="/company/contact/{{ $contact->id }}/files">Files</li>
                   </ul>
                 </div>
                 <div class="row pl-5">
@@ -140,7 +140,7 @@
                                 <i class="fas fa-copy shadow copy_info" style="background-color: #D93563;"></i>
                             </div>
                         </div>
-                                                <div class="row pl-5">
+                        <div class="row pl-5">
                           <div class="col-4">
 
                             <div class="info_item pb-4">
@@ -184,7 +184,7 @@
                   </div>
                   <div class="col-3 p-5 sidebar">
                       <div class="profile_picture">
-                          <img class="is-rounded" src="/storage/storage/uploads/EE1dpIJgpqac8HWXvZ2pFXn5b8UuF9cz5pVzOB1J.png">
+                          <img class="is-rounded" src="/storage/images/{{ $contact->company_logo }}">
                       </div>
                       <div class="search">
                           <input type="text" placeholder="Search information"> 

@@ -113,7 +113,7 @@ function searchResults() {
 
         type: 'get',
 
-        url: '/search/client',
+        url: '/search/contact',
 
         data: {
             'tags': value,

@@ -7,6 +7,7 @@
 .contact {
 	float: left;
 	padding-right: 50px;
+	margin-bottom: 30px;
 }
 
 .contact_img > img {
@@ -32,4 +33,17 @@
 	margin: auto;
 	float: none;
 	padding-bottom: 25px;
+}
+
+.staff_picture {
+	border-radius: 50%;
+}
+
+.staff_picture img {
+	height: 70px;
+	width: 70px;
+}
+
+.info_box {
+	height: auto;
 }

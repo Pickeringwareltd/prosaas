@@ -10,7 +10,7 @@
 @endsection
 
 @section('pageTitle', 'Techquity')
-@section('pageSubTitle', '| Daniel Broswell')
+@section('pageSubTitle', '| '.$profile->fullname )
 
 @section('content')
 <div class="wrapper">
@@ -22,8 +22,8 @@
             <div class="container-fluid">
                 <div class="row pl-3">
                   <ul id="nav_list">
-                    <li class="nav_item active" data-link="">Information</li>
-                    <li class="nav_item" data-link="files">Files</li>
+                    <li class="nav_item active" data-link="/company/staff/{{ $profile->id }}">Information</li>
+                    <li class="nav_item" data-link="/company/staff/{{ $profile->id }}/files">Files</li>
                   </ul>
                 </div>
                 <div class="row pl-5">
@@ -78,55 +78,25 @@
                         </div>
                         
                         <div class="row pl-5">
-                          <div class="col-4">
+                              @foreach($profile->info as $info)
+                              <div class="col-4">
 
-                            <div class="info_item pb-4">
-                              <div class="info_title_box">
-                                <i class="fas fa-map-marker-alt info_icon" style="display: inline-block; color: #3F50B1;"></i>
-                                <p class="info_title"><b>Registered address</b></p>
-                              </div>
-                              <div class="info_data_box">
-                                <p>The willows</p>
-                                <p>Castlelevington</p>
-                                <p>Yarm</p>
-                                <p>TS15 9PB</p>
-                              </div>
-                            </div>
+                                <div class="info_item pb-4">
+                                  <div class="info_title_box">
+                                    <i class="{{ $info->icon }} info_icon" style="display: inline-block; color: #3F50B1;"></i>
+                                    <p class="info_title"><b>{{ $info->title }}</b></p>
+                                  </div>
+                                  <div class="info_data_box">
+                                    @if($info->encrypted)
+                                      <p class="in_vault">VAULT</p>
+                                    @else
+                                      {!! $info->data !!}
+                                    @endif
+                                  </div>
+                                </div>
 
-                          </div>
-                          <div class="col-4">
-                            <div class="info_item pb-4">
-                              <div class="info_title_box">
-                                <i class="fas fa-file-invoice info_icon" style="display: inline-block; color: #3F50B1;"></i>
-                                <p class="info_title"><b>Company number</b></p>
                               </div>
-                              <div class="info_data_box">
-                                <p>12345678</p>
-                              </div>
-                            </div>
-                            <div class="info_item pb-4">
-                              <div class="info_title_box">
-                                <i class="fas fa-file-invoice-dollar info_icon" style="display: inline-block; color: #3F50B1;"></i>
-                                <p class="info_title"><b>VAT number</b></p>
-                              </div>
-                              <div class="info_data_box">
-                                <p class="in_vault">VAULT</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-4">
-                            <div class="info_item pb-4">
-                              <div class="info_title_box">
-                                <i class="fas fa-user info_icon" style="display: inline-block; color: #3F50B1;"></i>
-                                <p class="info_title"><b>Company contact</b></p>
-                              </div>
-                              <div class="info_data_box">
-                                <p>Jack Pickering</p>
-                                <p>+44 7568 304 518</p>
-                                <p>pickering96@hotmail.co.uk</p>
-                              </div>
-                            </div>
-                          </div>
+                              @endforeach
                         </div>
 
                       </div>
@@ -184,7 +154,7 @@
                   </div>
                   <div class="col-3 p-5 sidebar">
                       <div class="profile_picture">
-                          <img class="is-rounded" src="/storage/storage/uploads/5LI9T6pfpqAJleWeUZgXpTwUUFWCzApp6jrlVF8o.jpeg">
+                          <img class="is-rounded" src="/storage/images/{{ $profile->profile_picture }}">
                       </div>
                       <div class="search">
                           <input type="text" placeholder="Search information"> 

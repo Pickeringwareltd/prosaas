@@ -2,6 +2,8 @@
 
 @section('scripts')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" rel="stylesheet">
+
+    <link href="/css/company_staff.css" rel="stylesheet">
     <link href="/css/company_single.css" rel="stylesheet">
     <link href="/css/company_locations.css" rel="stylesheet">
 
@@ -22,13 +24,16 @@
           <div class="single_element">
             <div class="container-fluid">
                 <div class="row pl-3">
-                  <ul id="nav_list">
-                    <li class="nav_item" data-link="">Information</li>
-                    <li class="nav_item active" data-link="/locations">Locations</li>
-                    <li class="nav_item" data-link="/files">Files</li>
-                    <li class="nav_item" data-link="/staff">Staff</li>
-                    <li class="nav_item" data-link="/contacts">Contacts</li>
-                  </ul>
+                  <div class="col-9">
+                    <ul id="nav_list" class="pb-3">
+                      <li class="nav_item" data-link="">Information</li>
+                      <li class="nav_item active" data-link="/locations">Locations</li>
+                      <li class="nav_item" data-link="/files">Files</li>
+                      <li class="nav_item" data-link="/staff">Staff</li>
+                      <li class="nav_item" data-link="/contacts">Contacts</li>
+                    </ul>
+                    <hr />
+                  </div>
                 </div>
                 <div class="row pl-3">
                   <div class="col-9">
@@ -41,118 +46,59 @@
                 </div>
                 <div class="row pl-5">
                   <div class="col-9 p-5">
-                    
-                      <div class="row info_box position-relative">
-                        <div class="copy_edit_btns position-absolute">
-                            <i class="fas fa-copy shadow copy_info" style="background-color: #3F50B1;"></i>
-                        </div>
-                        <div class="col-4">
-                          <div class="map_img" id="map">
-                          </div> 
-                        </div>
-                        <div class="col-8">
-                          <div class="row">
-                            <div class="col">
-                              <p class="box_title">Head office</p>
+
+                    <div id="search_results"></div>
+                    <div id="all_results">
+                        @foreach($locations as $location)
+
+                          <div class="row info_box position-relative">
+                            <div class="copy_edit_btns position-absolute">
+                                <i class="fas fa-copy shadow copy_info" style="background-color: {{ $location->color }};"></i>
                             </div>
-                          </div>
-                          <div class="row pt-5">
-                            <div class="col-6">
-                              <div class="info_item pb-4">
-                                  <div class="info_title_box">
-                                    <i class="fas fa-map-marker-alt info_icon" style="display: inline-block; color: #3F50B1;"></i>
-                                    <p class="info_title"><b>Address</b></p>
-                                  </div>
-                                  <div class="info_data_box">
-                                    <p>Flat 2</p>
-                                    <p>Commerce House</p>
-                                    <p>Exchange Square</p>
-                                    <p>TS1 5HJ</p>
-                                  </div>
-                                </div>
+                            <div class="col-4">
+                              <div class="map_img new_map" id="map_{{ $location->id }}" data-name="map_{{ $location->id }}" data-long="{{ $location->long }}" data-lat="{{ $location->lat }}">
+                              </div> 
                             </div>
-                            <div class="col-6">
-                              <div class="info_item pb-4">
-                                  <div class="info_title_box">
-                                    <i class="fas fa-lock info_icon" style="display: inline-block; color: #3F50B1;"></i>
-                                    <p class="info_title"><b>Building code</b></p>
-                                  </div>
-                                  <div class="info_data_box">
-                                    <p class="in_vault">VAULT</p>
-                                  </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row pt-3">
-                            <div class="col">
-                                <span class="tag search-tag is-medium is-info is-rounded" data-name="tag_name" style="background-color: #3F50B1;">
-                                    <p class="pl-3 pr-3">Office</p>
-                                  <button class="delete is-small" style="display:none;"></button>
-                                </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    
-                      <div class="row info_box position-relative">
-                        <div class="copy_edit_btns position-absolute">
-                                <i class="fas fa-copy shadow copy_info" style="background-color: #D93563;"></i>
-                            </div>
-                        <div class="col-4">
-                          <div class="map_img" id="map2"></div>
-                        </div>
-                        <div class="col-8">
+                            <div class="col-8">
                               <div class="row">
                                 <div class="col">
-                                  <p class="box_title">Middlesbrough store</p>
+                                  <p class="box_title">{{ $location->name }}</p>
                                 </div>
                               </div>
                               <div class="row pt-5">
-                                <div class="col-6">
-                                  <div class="info_item pb-4">
-                                      <div class="info_title_box">
-                                        <i class="fas fa-map-marker-alt info_icon" style="display: inline-block; color: #D93563;"></i>
-                                        <p class="info_title"><b>Address</b></p>
-                                      </div>
-                                      <div class="info_data_box">
-                                        <p>Flat 2</p>
-                                        <p>Commerce House</p>
-                                        <p>Exchange Square</p>
-                                        <p>TS1 5HJ</p>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                  <div class="info_item pb-4">
-                                      <div class="info_title_box">
-                                        <i class="fas fa-lock info_icon" style="display: inline-block; color: #D93563;"></i>
-                                        <p class="info_title"><b>Building code</b></p>
-                                      </div>
-                                      <div class="info_data_box">
-                                        <p class="in_vault">VAULT</p>
+                                @foreach($location->info as $info)
+                                  <div class="col-6">
+                                    <div class="info_item pb-4">
+                                        <div class="info_title_box">
+                                          <i class="{{ $info->icon }} info_icon" style="display: inline-block; color: {{ $location->color }};"></i>
+                                          <p class="info_title"><b>{{ $info->title }}</b></p>
+                                        </div>
+                                        <div class="info_data_box">
+                                          @if($info->encrypted == true)
+                                            <p class="in_vault">VAULT</p>
+                                          @else
+                                            {!! $info->data !!}
+                                          @endif
+                                        </div>
                                       </div>
                                   </div>
-                                  <div class="info_item pb-4">
-                                      <div class="info_title_box">
-                                        <i class="fas fa-lock info_icon" style="display: inline-block; color: #D93563;"></i>
-                                        <p class="info_title"><b>VAT registration code</b></p>
-                                      </div>
-                                      <div class="info_data_box">
-                                        <p class="in_vault">VAULT</p>
-                                      </div>
-                                  </div>
-                                </div>
+                                @endforeach
                               </div>
                               <div class="row pt-3">
                                 <div class="col">
-                                    <span class="tag search-tag is-medium is-info is-rounded" data-name="tag_name" style="background-color: #D93563;">
-                                        <p class="pl-3 pr-3">Store</p>
+                                  @foreach($location->tags as $tag)
+                                    <span class="tag search-tag is-medium is-info is-rounded" data-name="{{ $tag->name }}" style="background-color: {{ $location->color }};">
+                                        <p class="pl-3 pr-3">{{ ucfirst($tag->name) }}</p>
                                       <button class="delete is-small" style="display:none;"></button>
                                     </span>
+                                  @endforeach
                                 </div>
                               </div>
                             </div>
-                      </div>
+                          </div>
+
+                        @endforeach
+                    </div>
                     
                   </div>
                   <div class="col-3 p-5 sidebar">
@@ -162,27 +108,26 @@
                       <div class="company_people">
                         <div class="staff_pictures">
                           <div class="row">
-                            <figure class="image card-image staff_picture first_picture" style="z-index: 3; position: relative; right: 0px;">
-                                <img class="is-rounded" src="/storage/storage/uploads/5LI9T6pfpqAJleWeUZgXpTwUUFWCzApp6jrlVF8o.jpeg">
-                            </figure>
-                            <figure class="image card-image staff_picture" style="z-index: 2; position: relative; right: 25px;">
-                                <img class="is-rounded" src="/storage/storage/uploads/qf96SQdhxRm4EidBCnW1DUmVb99mvWiAFbobBMvG.jpeg">
-                            </figure>
+                            @for ($i = 0; $i < 4; $i++)
+                                <figure class="image card-image staff_picture" style="z-index: {{ 5 - $i }}; position: relative; right: {{ $i * 25 }}px;">
+                                    <img class="image is-rounded" src="/storage/images/{{ $first_four_staff[$i]->profile_picture }}">
+                                </figure>
+                            @endfor
                           </div>
                           <div class="row">
-                            <p class="people_work_here"><b class="no_of_staff">TWO</b> people work here</p>
+                            <p class="people_work_here"><b id="no_of_staff" data-num="{{ $number_of_staff }}">-</b> people work here</p>
                           </div>
                         </div>
                       </div>
                       <div class="search">
-                          <input type="text" placeholder="Search locations"> 
+                          <input type="text" placeholder="Search locations" id="search"> 
                       </div>
                       <div class="tags">
-                        <span class="tag search-tag is-medium is-info is-rounded" data-name="tag_name" style="background-color: #3F50B1;">
+                        <span class="tag search-tag is-medium is-info is-rounded" data-name="office" style="background-color: #3F50B1;">
                             <p class="pl-3 pr-3">Office</p>
                           <button class="delete is-small" style="display:none;"></button>
                         </span>
-                        <span class="tag search-tag is-medium is-info is-rounded" data-name="tag_name" style="background-color: #D93563">
+                        <span class="tag search-tag is-medium is-info is-rounded" data-name="store" style="background-color: #D93563">
                             <p class="pl-3 pr-3">Store</p>
                           <button class="delete is-small" style="display:none;"></button>
                         </span>
@@ -207,6 +152,8 @@
     </script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 
-    <script src="/js/google_maps.js"></script>
+    <!-- <script src="/js/google_maps.js"></script> -->
     <script src="/js/inner_navbar.js"></script>
+    <script src="/js/sidebar_staff.js"></script>
+    <script src="/js/search_locations.js"></script>
 @endsection

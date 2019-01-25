@@ -8,9 +8,9 @@
         inline-template>
 
     <nav class="navbar navbar-light navbar-expand-md navbar-spark">
-        <div class="no_container" v-if="user">
+        <div class="no_container">
             <!-- Branding Image -->
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="/companies">
                 <p id="brand_title">proSaas</p>
             </a>
 
@@ -19,7 +19,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+            <div id="navbarSupportedContent" class="collapse navbar-collapse" v-if="user">
                 <a @click="showNotifications" class="notification-pill mx-auto mb-3 mb-md-0 mr-md-0 ml-md-auto">
                 <svg class="mr-2" width="18px" height="20px" viewBox="0 0 18 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <defs>
@@ -100,7 +100,6 @@
 
             <div>
                 <span class="header_titles">
-                    <a href="/company/staff"><i class="fas fa-chevron-left" id="back_icon"></i></a>
                     <p class="page_title">@yield('pageTitle')</p>
                     <p class="page_subtitle">@yield('pageSubTitle')</p>
                 </span>

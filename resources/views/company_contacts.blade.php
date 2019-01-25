@@ -20,13 +20,16 @@
           <div class="single_element">
             <div class="container-fluid">
                 <div class="row pl-3">
-                  <ul id="nav_list">
-                    <li class="nav_item" data-link="">Information</li>
-                    <li class="nav_item" data-link="/locations">Locations</li>
-                    <li class="nav_item" data-link="/files">Files</li>
-                    <li class="nav_item" data-link="/staff">Staff</li>
-                    <li class="nav_item active" data-link="/contacts">Contacts</li>
-                  </ul>
+                  <div class="col-9">
+                    <ul id="nav_list" class="pb-3">
+                      <li class="nav_item" data-link="">Information</li>
+                      <li class="nav_item" data-link="/locations">Locations</li>
+                      <li class="nav_item" data-link="/files">Files</li>
+                      <li class="nav_item" data-link="/staff">Staff</li>
+                      <li class="nav_item active" data-link="/contacts">Contacts</li>
+                    </ul>
+                    <hr />
+                  </div>
                 </div>
                 <div class="row pl-5">
                   <div class="col-9 p-5">
@@ -67,78 +70,42 @@
                       </div>
 
                     <div class="row">
-                      <div class="info_box">
 
-                        <div class="row info_title_row pb-5 position-relative">
-                            <p class="box_title">Clients</p>
+                      @foreach($groups as $group)
+                        <div class="info_box">
 
-                            <div class="box_image position-absolute">
-                              <img src="/images/c_red_square.png">
-                            </div>
-                            
-                            <div class="copy_edit_btns position-absolute">
-                                <i class="fas fa-plus shadow copy_info" style="background-color: #D93563;"></i>
-                            </div>
+                          <div class="row info_title_row pb-5 position-relative">
+                              <p class="box_title">{{ $group->name }}</p>
+
+                              <div class="box_image position-absolute">
+                                <img src="/images/{{ $group->logo }}">
+                              </div>
+                              
+                              <div class="copy_edit_btns position-absolute">
+                                  <i class="fas fa-plus shadow copy_info" style="background-color: #{{ $group->colour }};"></i>
+                              </div>
+                          </div>
+                          
+                          <div class="row pl-5">
+
+                            @foreach($group->contacts as $contact)
+
+                              <div class="col-3 contact" data-id="{{ $contact->id }}">
+                                <div class="contact_img">
+                                  <img class="is-rounded" src="/storage/images/{{ $contact->company_logo }}">
+                                </div>
+                                <div class="contact_data">
+                                  <p class="contact_name">{{ $contact->name }}</p>
+                                  <p class="contact_role">{{ $contact->sector }}</p>
+                                </div>
+                              </div>
+
+                            @endforeach
+
+                          </div>
+
                         </div>
-                        
-                        <div class="row pl-5">
-                            <div class="contact" data-id="1">
-                              <div class="contact_img">
-                                <img class="is-rounded" src="/storage/storage/uploads/EE1dpIJgpqac8HWXvZ2pFXn5b8UuF9cz5pVzOB1J.png">
-                              </div>
-                              <div class="contact_data">
-                                <p class="contact_name">Western Union</p>
-                                <p class="contact_role">Finance</p>
-                              </div>
-                            </div>
-                            <div class="contact" data-id="2">
-                              <div class="contact_img">
-                                <img class="is-rounded" src="/storage/storage/uploads/ba3iVjhwhuBpQeQ6o7jKsCrr26vmObxshz1GsRju.png">
-                              </div>
-                              <div class="contact_data">
-                                <p class="contact_name">Starling Bank</p>
-                                <p class="contact_role">Finance</p>
-                              </div>
-                            </div>
-                        </div>
-
-                      </div>
-
-                      <div class="info_box">
-
-                        <div class="row info_title_row pb-5 position-relative">
-                            <p class="box_title">Suppliers</p>
-
-                            <div class="box_image position-absolute">
-                              <img src="/images/s_green_square.png">
-                            </div>
-                            
-                            <div class="copy_edit_btns position-absolute">
-                                <i class="fas fa-plus shadow copy_info" style="background-color: #35D9CC;"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="row pl-5">
-                            <div class="contact">
-                              <div class="contact_img">
-                                <img class="is-rounded" src="/storage/storage/uploads/5LI9T6pfpqAJleWeUZgXpTwUUFWCzApp6jrlVF8o.jpeg">
-                              </div>
-                              <div class="contact_data">
-                                <p class="contact_name">Jack Pickering</p>
-                                <p class="contact_role">Developer</p>
-                              </div>
-                            </div>
-                            <div class="contact">
-                              <div class="contact_img">
-                                <img class="is-rounded" src="/storage/storage/uploads/qf96SQdhxRm4EidBCnW1DUmVb99mvWiAFbobBMvG.jpeg">
-                              </div>
-                              <div class="contact_data">
-                                <p class="contact_name">Susan Boyle</p>
-                                <p class="contact_role">CEO</p>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
+                      @endforeach
                     </div>
                   </div>
                   <div class="col-3 p-5 sidebar">
@@ -148,15 +115,14 @@
                       <div class="company_people">
                         <div class="staff_pictures">
                           <div class="row">
-                            <figure class="image card-image staff_picture first_picture" style="z-index: 3; position: relative; right: 0px;">
-                                <img class="is-rounded" src="/storage/storage/uploads/5LI9T6pfpqAJleWeUZgXpTwUUFWCzApp6jrlVF8o.jpeg">
-                            </figure>
-                            <figure class="image card-image staff_picture" style="z-index: 2; position: relative; right: 25px;">
-                                <img class="is-rounded" src="/storage/storage/uploads/qf96SQdhxRm4EidBCnW1DUmVb99mvWiAFbobBMvG.jpeg">
-                            </figure>
+                            @for ($i = 0; $i < 4; $i++)
+                                <figure class="image card-image staff_picture" style="z-index: {{ 5 - $i }}; position: relative; right: {{ $i * 25 }}px;">
+                                    <img class="image is-rounded" src="/storage/images/{{ $first_four_staff[$i]->profile_picture }}">
+                                </figure>
+                            @endfor
                           </div>
                           <div class="row">
-                            <p class="people_work_here"><b class="no_of_staff">TWO</b> people work here</p>
+                            <p class="people_work_here"><b id="no_of_staff" data-num="{{ $number_of_staff }}">-</b> people work here</p>
                           </div>
                         </div>
                       </div>
@@ -164,14 +130,21 @@
                           <input type="text" placeholder="Search contacts" id="search"> 
                       </div>
                       <div class="tags">
-                        <span class="tag search-tag is-medium is-info is-rounded" data-name="Suppliers" style="background-color: #35D9CC;">
-                            <p class="pl-3 pr-3">Suppliers</p>
-                          <button class="delete is-small" style="display:none;"></button>
-                        </span>
-                        <span class="tag search-tag is-medium is-info is-rounded" data-name="Clients" style="background-color: #D93563">
-                            <p class="pl-3 pr-3">Clients</p>
-                          <button class="delete is-small" style="display:none;"></button>
-                        </span>
+
+                       @foreach ($tags as $tag)
+                          @php
+                              // colours for tags
+                              $colours = array("#35D9CC", "#3F50B1","#D93563");
+                               
+                              // get random index from array $arrX
+                              $randIndex = array_rand($colours);
+                          @endphp
+                            <span class="tag search-tag is-medium is-info is-rounded" data-name="{{ $tag }}" style="background-color: {{ $colours[$randIndex] }}">
+                                <p class="pl-3 pr-3">{{ $tag }}</p>
+                              <button class="delete is-small" style="display:none;"></button>
+                            </span>
+                        @endforeach
+
                       </div>
                       <div id="search_results"> 
                       </div>
@@ -190,5 +163,6 @@
     <script src="/js/inner_navbar.js"></script>
     <script src="/js/contact_links.js"></script>
     <script src="/js/search_client.js"></script>
+    <script src="/js/sidebar_staff.js"></script>
 
 @endsection
